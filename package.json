@@ -1,0 +1,47 @@
+{
+  "name": "sollen_v4",
+  "version": "4.0.0",
+  "description": "L'API Sollen est le cœur de l'application de gestion des installations photovoltaïques développée par Solis, une entreprise leader dans le domaine de l'énergie solaire. Cette API offre une interface robuste et sécurisée pour la gestion complète des parcs solaires, permettant aux utilisateurs de surveiller, contrôler et optimiser leurs installations photovoltaïques avec efficacité.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder.js",
+    "data:destroy": "node backend/seeder.js -d",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KRYSTO-NC/solenn_v4.git"
+  },
+  "keywords": [
+    "Solis",
+    "Sollen",
+    "Nouvelle-Calédonie"
+  ],
+  "author": "VELTEN STOYANN",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KRYSTO-NC/solenn_v4/issues"
+  },
+  "homepage": "https://github.com/KRYSTO-NC/solenn_v4#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.2.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.12"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0"
+  }
+}
