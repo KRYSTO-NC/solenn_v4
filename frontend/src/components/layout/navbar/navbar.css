@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,100;1,300&display=swap");
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  line-height: 1.1;
+  color: #ffa231;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  background-color: #ffffff;
+  color: #25282a;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  color: #ffa231;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  color: #25282a;
+  cursor: pointer;
+}
+
+.badge {
+  font-size: 1.1rem;
+  padding: 0.2rem 0.5rem;
+  margin: 0.3rem;
+  text-align: center;
+  background-color: #ffffff;
+  color: #25282a;
+  border-radius: 5px;
+}
+.badge.badge-primary {
+  background-color: #ffa231;
+  color: #ffffff;
+}
+.badge.badge-secondary {
+  background-color: #4a5963;
+  color: #ffffff;
+}
+.badge.badge-dark {
+  background-color: #25282a;
+  color: #ffffff;
+}
+.badge.badge-success {
+  background-color: #27bc36;
+  color: #ffffff;
+}
+.badge.badge-danger {
+  background-color: #c52b2b;
+  color: #ffffff;
+}
+
+.m-1 {
+  margin: 1rem;
+}
+
+.my-1 {
+  margin: 1rem 0;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.py-1 {
+  padding: 1rem 0;
+}
+
+.m-2 {
+  margin: 2rem;
+}
+
+.my-2 {
+  margin: 2rem 0;
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
+.py-2 {
+  padding: 2rem 0;
+}
+
+.m-3 {
+  margin: 3rem;
+}
+
+.my-3 {
+  margin: 3rem 0;
+}
+
+.p-3 {
+  padding: 3rem;
+}
+
+.py-3 {
+  padding: 3rem 0;
+}
+
+.m-4 {
+  margin: 4rem;
+}
+
+.my-4 {
+  margin: 4rem 0;
+}
+
+.p-4 {
+  padding: 4rem;
+}
+
+.py-4 {
+  padding: 4rem 0;
+}
+
+.m-5 {
+  margin: 5rem;
+}
+
+.my-5 {
+  margin: 5rem 0;
+}
+
+.p-5 {
+  padding: 5rem;
+}
+
+.py-5 {
+  padding: 5rem 0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+}
+.table thead {
+  background-color: #ffa231;
+  color: #ffffff;
+}
+.table th, .table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #97a6b6;
+}
+.table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+.table tr:hover {
+  background-color: #97a6b6;
+}
+
+@keyframes flip-in-hor-top {
+  0% {
+    transform: rotateX(-80deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes vertical-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60% {
+    transform: translateX(10px);
+  }
+  80% {
+    transform: translateX(8px);
+  }
+  90% {
+    transform: translateX(-8px);
+  }
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px #ffa231;
+  opacity: 0.9;
+}
+.navbar .links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .links li a {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #25282a;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  transition: all 0.3s ease;
+}
+.navbar .links li a:hover {
+  color: #ffa231;
+}
+
+.logo {
+  width: 5rem;
+  height: 5rem;
+  margin-left: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 50%;
+}/*# sourceMappingURL=navbar.css.map */
