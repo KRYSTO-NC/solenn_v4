@@ -2,3 +2,9 @@
 export const BASE_URL = ``
 
 export const USERS_URL = ` sollen/api/v4/users`
+
+// DOLIBARR
+
+export const DOLIBAR_URL = `https://solis-erp.square.nc/api/index.php`
+export const DOLIBARR_API_KEY = `2uD482031Y6uMQ0cgzJbyoy7ALtwNOSI`
+export const THIRDPARTIES_URL = `/thirdparties`

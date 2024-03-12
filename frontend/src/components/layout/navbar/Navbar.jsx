@@ -5,11 +5,9 @@ import {
 
   FaPlusCircle,
   FaProductHunt,
-  FaShoppingBasket,
   FaSignOutAlt,
   FaSolarPanel,
-  FaUser,
-  FaUserAlt,
+
 } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLogoutMutation } from '../../../slices/userApiSlice'
@@ -50,7 +48,7 @@ const Navbar = () => {
           {userInfo ? (
             <>
               <li>
-                <Link to="/profile">
+                <Link to="/catalogue-sollen">
                   <FaProductHunt /> <span className="hide-sm">Catalogue Sollen</span>{' '}
                 </Link>
               </li>

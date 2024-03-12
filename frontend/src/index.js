@@ -15,6 +15,7 @@ import NotFound from './screens/NotFound'
 import HomeScreen from './screens/privateScreens/homeScreen/HomeScreen'
 import LoginScreen from './screens/publicScreens/loginScreen/LoginScreen'
 import SimulationSolis from './screens/publicScreens/simulationSolis/SimulationSolis'
+import SollenProductScreen from './screens/privateScreens/sollenProductScreen/SollenProductScreen'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
       {/* Registered users */}
       <Route path="" element={<PrivateRoute />}>
         <Route path="/home" element={<HomeScreen />} />
+        <Route path="/catalogue-sollen" element={<SollenProductScreen />} />
       </Route>
       {/* Admin users */}
       <Route path="" element={<AdminRoute />}></Route>
