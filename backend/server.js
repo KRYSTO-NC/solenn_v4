@@ -24,7 +24,7 @@ app.use(cors())
 app.use(cookieParser())
 
 // Define routes
-app.use('sollen/api/v4/users', userRoutes)
+app.use('/sollen/api/v4/users', userRoutes)
 
 app.get('/', (req, res) => {
   res.send('API is running...')

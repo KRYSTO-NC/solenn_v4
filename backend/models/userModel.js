@@ -7,6 +7,12 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    lastname: {
+      type: String,
+      required: true,
+    },
+
     email: {
       type: String,
       required: true,
@@ -35,7 +41,7 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['User', 'Commercial', 'Installateur'],
+      enum: ['User', 'Commercial', 'Installateur', 'Responsable'],
       required: true,
       default: 'User',
     },

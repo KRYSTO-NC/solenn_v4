@@ -17,6 +17,7 @@ const authUser = asyncHandler(async (req, res) => {
     res.status(200).json({
       _id: user._id,
       name: user.name,
+      lastname: user.lastname,
       email: user.email,
       isAdmin: user.isAdmin,
       role: user.role,
@@ -41,6 +42,7 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
+    lastname,
   })
   if (user) {
     generateToken(res, user._id)
@@ -48,6 +50,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      lastname: user.lastname,
       isAdmin: user.isAdmin,
       role: user.role,
     })
@@ -89,6 +92,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
     res.status(200).json({
       _id: user._id,
       name: user.name,
+      lastname: user.lastname,
       email: user.email,
       isAdmin: user.isAdmin,
       role: user.role,
@@ -116,6 +120,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     res.status(200).json({
       _id: updatedUser._id,
       name: updatedUser.name,
+      lastname: updatedUser.lastname,
       role: updatedUser.role,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
@@ -174,6 +179,7 @@ const updateUser = asyncHandler(async (req, res) => {
     user.name = req.body.name || user.name
     user.email = req.body.email || user.email
     user.role = req.body.role || user.role
+    user.lastname = req.body.lastname || user.lastname
     user.isAdmin = Boolean(req.body.isAdmin)
 
     const updatedUser = await user.save()
@@ -181,6 +187,7 @@ const updateUser = asyncHandler(async (req, res) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
+      lastname: updatedUser.lastname,
       isAdmin: updatedUser.isAdmin,
       role: updatedUser.role,
     })
