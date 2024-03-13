@@ -8,6 +8,7 @@ dotenv.config()
 import connectDB from './config/db.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import userRoutes from './routes/userRoutes.js'
+import uploadRoutes from './routes/uploadRoutes.js'
 import simulationRoutes from './routes/simulationRoutes.js'
 const port = process.env.PORT || 5000
 
@@ -25,11 +26,27 @@ app.use(cookieParser())
 
 // Define routes
 app.use('/sollen/api/v4/users', userRoutes)
+app.use('/api/upload', uploadRoutes)
 app.use('/sollen/api/v4/simulations', simulationRoutes)
 
-app.get('/', (req, res) => {
-  res.send('API is running...')
-})
+const __dirname = path.resolve()
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')),
+  )
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running...')
+  })
+}
+
+app.use(notFound)
+
+app.use(errorHandler)
 
 // Utilisez server.listen pour gérer à la fois l'API express et les connexions Socket.IO
 app.listen(port, () => {
