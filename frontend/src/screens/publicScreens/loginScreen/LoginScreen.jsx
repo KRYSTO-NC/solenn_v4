@@ -27,6 +27,9 @@ const LoginScreen = () => {
       if (userInfo.isAdmin) {
         // Redirect to the admin dashboard if the user is an admin
         navigate('/home');
+      }  else if (userInfo.role === 'User'){
+        // Redirect to the user dashboard if the user is not an admin
+        navigate('/votre-espace-sollen');
       } else {
         // Redirect to the original destination if the user is not an admin
         navigate(redirect);
@@ -45,7 +48,7 @@ const LoginScreen = () => {
     }
   }
   return (
-    <div className='page-container'>
+    <div className='container'>
       <section className="heading">
         <h1 className='large'>
           {' '}

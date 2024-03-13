@@ -172,6 +172,7 @@ button {
 }
 .table th, .table td {
   padding: 1rem;
+  font-size: 1.2rem;
   text-align: left;
   border-bottom: 1px solid #97a6b6;
 }
@@ -304,6 +305,7 @@ button {
 }
 .table th, .table td {
   padding: 1rem;
+  font-size: 1.2rem;
   text-align: left;
   border-bottom: 1px solid #97a6b6;
 }
@@ -495,30 +497,6 @@ button {
 
 .center-y {
   margin-top: 35vh;
-}
-
-.testimonials {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  flex-wrap: wrap;
-  align-items: center;
-  text-align: center;
-}
-.testimonials .testimonial {
-  margin: 2rem;
-  border-radius: 1rem;
-  width: 90rem;
-  padding: 2rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.testimonials .testimonial i {
-  font-size: 1.5rem;
-  color: #25282a;
-}
-.testimonials .testimonial i span {
-  font-weight: bolder;
-  color: #ffa231;
 }
 
 @keyframes flip-in-hor-top {

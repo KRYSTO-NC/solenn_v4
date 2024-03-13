@@ -5,7 +5,7 @@ const AdminRoute = () => {
 
     const { userInfo } = useSelector((state) => state.auth);
 
-  return userInfo  &&   userInfo.isAdmin ? <Outlet /> : <Navigate to="/login" replace />;
+  return userInfo  &&   userInfo.isAdmin ? <Outlet /> : <Navigate to="/" replace />;
 };
 
 export default AdminRoute;

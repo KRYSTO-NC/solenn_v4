@@ -16,6 +16,11 @@ import HomeScreen from './screens/privateScreens/homeScreen/HomeScreen'
 import LoginScreen from './screens/publicScreens/loginScreen/LoginScreen'
 import SimulationSolis from './screens/publicScreens/simulationSolis/SimulationSolis'
 import SollenProductScreen from './screens/privateScreens/sollenProductScreen/SollenProductScreen'
+import UserRoute from './components/utils/UserRoutes'
+import UserHomeScreen from './screens/userScreens/UserHomeScreen'
+import UserListScreen from './screens/adminScreens/userListScreen/UserListScreen'
+import SimulationGuide from './screens/privateScreens/SimulationGuide/SimulationGuide'
+import SimulationsScreen from './screens/privateScreens/simulationScreen/SimulationScreen'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,10 +35,18 @@ const router = createBrowserRouter(
       {/* Registered users */}
       <Route path="" element={<PrivateRoute />}>
         <Route path="/home" element={<HomeScreen />} />
+        <Route path="/creer-simulation" element={<SimulationGuide />} />
+        <Route path="/simulations" element={<SimulationsScreen />} />
         <Route path="/catalogue-sollen" element={<SollenProductScreen />} />
       </Route>
       {/* Admin users */}
-      <Route path="" element={<AdminRoute />}></Route>
+      <Route path="" element={<AdminRoute />}>
+        <Route path="/gestion-utilisateurs" element={<UserListScreen />} />
+      </Route>
+      {/* Users */}
+      <Route path="" element={<UserRoute />}>
+        <Route path="/votre-espace-sollen" element={<UserHomeScreen />} />
+      </Route>
     </Route>,
   ),
 )

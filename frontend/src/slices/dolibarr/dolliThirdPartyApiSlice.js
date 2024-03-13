@@ -1,5 +1,5 @@
-import { DOLIBAR_URL } from '../../constants/constants'
-import { DOLIBARR_API_KEY } from '../../constants/constants'
+import { DOLIBAR_URL } from '../../constants'
+import { DOLIBARR_API_KEY } from '../../constants'
 import { apiSlice } from '../apiSlice'
 
 export const dolliThirdPartyApiSlice = apiSlice.injectEndpoints({
