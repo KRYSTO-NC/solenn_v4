@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useGetProductsQuery } from '../../../slices/dolibarr/dolliProductApiSlice'
 
 const SollenProductScreen = () => {
-  const [selectedCategory, setSelectedCategory] = useState('22') // État pour stocker la catégorie sélectionnée
+  const [selectedCategory, setSelectedCategory] = useState('23') // État pour stocker la catégorie sélectionnée
   const { data, isLoading, error, refetch } = useGetProductsQuery(
     selectedCategory,
   )
@@ -19,6 +19,7 @@ const SollenProductScreen = () => {
         <div className="form-group">
           {/* Menu déroulant pour filtrer les catégories */}
           <select value={selectedCategory} onChange={handleCategoryChange}>
+            <option value="23">Type d'installation (première ligne du devis)</option>
             <option value="22">Batteries</option>
             <option value="17">Module PV </option>
             <option value="21">Onduleurs</option>

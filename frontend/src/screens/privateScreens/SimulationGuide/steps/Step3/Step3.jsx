@@ -74,7 +74,7 @@ const Step3 = ({ installation, onNext }) => {
       <h1>Beneficiaire</h1>
       <div style={{ marginBottom: "20px" }}>
   <div md={10}>
-    <h5> Avant de continuer, assurez-vous que le client est déjà enregistré dans Dolibarr. </h5>
+    <p className="lead"> Avant de continuer, assurez-vous que le client est déjà enregistré dans Dolibarr. </p>
   </div>
 
 
@@ -101,7 +101,7 @@ const Step3 = ({ installation, onNext }) => {
           Une erreur est survenue lors du chargement des données. Veuillez réessayer.
        </p>
       ) : (
-        <div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div md={8}>
             <table striped hover responsive className="table">
               <thead>

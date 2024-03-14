@@ -102,7 +102,7 @@ const Step2 = ({ installation, onNext }) => {
           Une erreur est survenue lors du chargement des données. Veuillez reesayer
         </p>
       ) : (
-        <div>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div md={8}>
             <table striped hover responsive className="table">
               <thead>

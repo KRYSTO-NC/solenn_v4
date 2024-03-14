@@ -27,7 +27,7 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  background-color: #ffffff;
+  background-color: rgb(237, 237, 237);
   color: #25282a;
   font-size: 1rem;
   line-height: 1.6;
@@ -564,7 +564,7 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-  background-color: #ffffff;
+  background-color: rgb(237, 237, 237);
   color: #25282a;
   font-size: 1rem;
   line-height: 1.6;

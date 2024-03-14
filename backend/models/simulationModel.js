@@ -187,6 +187,9 @@ const simulationSchema = mongoose.Schema(
 
     // Informations sur la demande EEC
     demandeEEC: {
+      dateDemande: {
+        type: Date,
+      },
       status: {
         type: String,
         enum: [
@@ -201,6 +204,9 @@ const simulationSchema = mongoose.Schema(
     },
     // Informations sur la demande Enercal
     demandeEnercal: {
+      dateDemande: {
+        type: Date,
+      },
       status: {
         type: String,
         enum: [
@@ -215,6 +221,9 @@ const simulationSchema = mongoose.Schema(
     },
     // Informations sur la demande Dimenc
     demandeDimenc: {
+      dateDemande: {
+        type: Date,
+      },
       status: {
         type: String,
         enum: [
@@ -229,6 +238,9 @@ const simulationSchema = mongoose.Schema(
     },
     // Informations sur la conformité
     conformite: {
+      dateDemande: {
+        type: Date,
+      },
       status: {
         type: String,
         enum: [
@@ -258,7 +270,7 @@ const simulationSchema = mongoose.Schema(
     },
     dureeGarantieEnAnnees: {
       type: Number,
-      default: 0,
+      default: 1,
     },
     garantieActive: {
       type: Boolean,

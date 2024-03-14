@@ -21,6 +21,8 @@ import UserHomeScreen from './screens/userScreens/UserHomeScreen'
 import UserListScreen from './screens/adminScreens/userListScreen/UserListScreen'
 import SimulationGuide from './screens/privateScreens/SimulationGuide/SimulationGuide'
 import SimulationsScreen from './screens/privateScreens/simulationScreen/SimulationScreen'
+import ParametrageScreen from './screens/adminScreens/parametrageScreen.jsx/ParametrageScreen'
+import SimulationDetails from './screens/privateScreens/simulationDetails/SimulationDetails'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,11 +39,13 @@ const router = createBrowserRouter(
         <Route path="/home" element={<HomeScreen />} />
         <Route path="/creer-simulation" element={<SimulationGuide />} />
         <Route path="/simulations" element={<SimulationsScreen />} />
+        <Route path="/simulation/:id" element={<SimulationDetails />} />
         <Route path="/catalogue-sollen" element={<SollenProductScreen />} />
       </Route>
       {/* Admin users */}
       <Route path="" element={<AdminRoute />}>
         <Route path="/gestion-utilisateurs" element={<UserListScreen />} />
+        <Route path="/parametrage-sollen" element={<ParametrageScreen />} />
       </Route>
       {/* Users */}
       <Route path="" element={<UserRoute />}>

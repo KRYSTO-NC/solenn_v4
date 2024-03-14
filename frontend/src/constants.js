@@ -3,7 +3,8 @@ export const BASE_URL = ``
 
 export const USERS_URL = ` sollen/api/v4/users`
 export const UPLOAD_URL = `sollen/api/v4/upload`
-export const SIMULATIONS_URL = `sollen/api/v4/simulations`
+
+export const SIMULATIONS_URL = `/sollen/api/v4/simulations`
 
 // DOLIBARR
 

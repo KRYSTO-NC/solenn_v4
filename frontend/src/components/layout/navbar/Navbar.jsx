@@ -51,6 +51,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link to="/simulations">
+                <FaProductHunt />
+                <span>Simulations</span>
+              </Link>
+            </li>
+            <li>
               <Link to="/creer-simulation">
                 <FaPlusCircle />
                 <span>Nouvelle Simulation</span>

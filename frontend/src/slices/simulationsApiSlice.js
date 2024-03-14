@@ -1,5 +1,5 @@
-import { SIMULATIONS_URL } from '../constants'
 import { apiSlice } from './apiSlice'
+import { SIMULATIONS_URL } from '../constants'
 
 export const simulationsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
