@@ -236,6 +236,23 @@ const simulationSchema = mongoose.Schema(
         default: 'Non Commencé',
       },
     },
+    // Informations sur la demande Dimenc
+    demandeCotsuel: {
+      dateDemande: {
+        type: Date,
+      },
+      status: {
+        type: String,
+        enum: [
+          'Non Commencé',
+          'En Demande',
+          'Accepté',
+          'Refusé',
+          'sous-reserve',
+        ],
+        default: 'Non Commencé',
+      },
+    },
     // Informations sur la conformité
     conformite: {
       dateDemande: {
@@ -254,19 +271,67 @@ const simulationSchema = mongoose.Schema(
       },
     },
 
+    dateAccord: {
+      date: {
+        type: Date,
+      },
+      status: {
+        type: String,
+        enum: ['En attente', 'Accord'],
+        default: 'En attente',
+      },
+    },
+    accompte: {
+      dateDemande: {
+        type: Date,
+      },
+      status: {
+        type: String,
+        enum: ['En attente', 'Reçu'],
+        default: 'En attente',
+      },
+    },
     datePrevisionelPose: {
-      type: Date,
+      date: {
+        type: Date,
+      },
+      status: {
+        type: String,
+        enum: ['En attente', 'Prévu'],
+        default: 'En attente',
+      },
     },
 
     datePose: {
-      type: Date,
+      date: {
+        type: Date,
+      },
+      status: {
+        type: String,
+        enum: ['En attente', 'Prévu', 'Posé', 'Retard'],
+        default: 'En attente',
+      },
     },
     datePrevisionelMiseEnService: {
-      type: Date,
+      date: {
+        type: Date,
+      },
+      status: {
+        type: String,
+        enum: ['En attente', 'Prévu'],
+        default: 'En attente',
+      },
     },
 
     dateMiseEnService: {
-      type: Date,
+      date: {
+        type: Date,
+      },
+      status: {
+        type: String,
+        enum: ['En attente', 'Prévu', 'En service', 'Retard'],
+        default: 'En attente',
+      },
     },
     dureeGarantieEnAnnees: {
       type: Number,

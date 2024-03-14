@@ -165,7 +165,7 @@ button {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
 }
 .table thead {
   background-color: #ffa231;
@@ -173,7 +173,7 @@ button {
 }
 .table th, .table td {
   padding: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: left;
   border-bottom: 1px solid #97a6b6;
 }
@@ -353,6 +353,15 @@ button {
   background-color: #471010;
   color: #ffffff;
 }
+.btn-warning {
+  background-color: #dc8420;
+  color: #ffffff;
+  color: #ffffff;
+}
+.btn-warning:hover {
+  background-color: #471010;
+  color: #ffffff;
+}
 
 .dark-overlay {
   height: 100%;
@@ -481,7 +490,7 @@ button {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
 }
 .table thead {
   background-color: #ffa231;
@@ -489,7 +498,7 @@ button {
 }
 .table th, .table td {
   padding: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: left;
   border-bottom: 1px solid #97a6b6;
 }
@@ -702,7 +711,7 @@ button {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
 }
 .table thead {
   background-color: #ffa231;
@@ -710,7 +719,7 @@ button {
 }
 .table th, .table td {
   padding: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: left;
   border-bottom: 1px solid #97a6b6;
 }
@@ -890,6 +899,15 @@ button {
   background-color: #471010;
   color: #ffffff;
 }
+.btn-warning {
+  background-color: #dc8420;
+  color: #ffffff;
+  color: #ffffff;
+}
+.btn-warning:hover {
+  background-color: #471010;
+  color: #ffffff;
+}
 
 .dark-overlay {
   height: 100%;
@@ -1018,7 +1036,7 @@ button {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
 }
 .table thead {
   background-color: #ffa231;
@@ -1026,7 +1044,7 @@ button {
 }
 .table th, .table td {
   padding: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: left;
   border-bottom: 1px solid #97a6b6;
 }
@@ -1111,4 +1129,28 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.card-date {
+  width: 30rem;
+  font-weight: 600;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  background-color: #fff;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.card-date h2 {
+  margin-bottom: 1rem;
+}
+.card-date p {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
 }/*# sourceMappingURL=main.css.map */

@@ -7,7 +7,9 @@ import './simulationDetails.css'
 import logoEec from '../../../assets/logo-eed.png';
 import logoDimenc from '../../../assets/logo_dimenc.jpg';
 import logoEnercal from '../../../assets/logo-enercal.svg';
+import logoCotsuel from '../../../assets/logo-cotsuel.png';
 import CardAdministratif from '../../../components/CardAdministratif/CardAdministratif';
+import CardDate from '../../../components/CardDate/CardDate';
 const SimulationDetails = () => {
     const { id: simulationId } = useParams();
 
@@ -38,13 +40,30 @@ console.log(simulation);
 
 
 
+                <h3 className='medium'>Dates clefs</h3>
+                 <div className="formalite-container">
+                    <CardDate  title="Date Accord" data={simulation.dateAccord} />
+                    <CardDate  title="Date Accompte" data={simulation.datePose} />
+                    <CardDate  title="Prev- date de pose" data={simulation.datePrevisionelPose} />
+                    <CardDate  title="Date de pose" data={simulation.datePose} />
+                    <CardDate  title="Date prev de mise en service" data={simulation.datePrevisionelMiseEnService} />
+                    <CardDate  title="Date de mise en service" data={simulation.dateMiseEnService} />
+                   
+                 </div>
                 <h3 className='medium'>Etat des démarches</h3>
                  <div className="formalite-container">
-                    <CardAdministratif logo={logoEec} title="Demande EEC" data={simulation.demandeEEC} />
+
+                 {simulation.concessionaire === 'EEC' ? (
+    <CardAdministratif logo={logoEec} title="Demande EEC" data={simulation.demandeEEC} />
+) : (
+    <CardAdministratif logo={logoEnercal} title="Demande ENERCAL" data={simulation.demandeEnercal} />
+)}
+
                     <CardAdministratif  logo={logoDimenc}  title="Demande DIMENC" data={simulation.demandeDimenc} />
-                    <CardAdministratif  logo={logoEnercal} title="Demande ENERCAL" data={simulation.demandeEnercal} />
+                    <CardAdministratif  logo={logoCotsuel} title="Demande COTSUEL" data={simulation.demandeCotsuel} />
                  </div>
                 </>
+                
             )}
         </div>
     );

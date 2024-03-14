@@ -112,7 +112,7 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
 }
 .table thead {
   background-color: #ffa231;
@@ -120,7 +120,7 @@
 }
 .table th, .table td {
   padding: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: left;
   border-bottom: 1px solid #97a6b6;
 }

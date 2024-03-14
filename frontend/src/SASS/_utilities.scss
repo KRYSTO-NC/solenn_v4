@@ -195,6 +195,14 @@
             @include setBackground(darken($danger-color, 30%));
         }
     }
+    &-warning {
+        @include setBackground($warning-color);
+        color: $light-color;
+
+        &:hover {
+            @include setBackground(darken($danger-color, 30%));
+        }
+    }
 
 
 }

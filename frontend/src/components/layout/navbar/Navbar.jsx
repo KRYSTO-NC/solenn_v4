@@ -51,6 +51,12 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
+              <Link to="/suivie-affaires">
+                <FaProductHunt />
+                <span>Suivie affaires</span>
+              </Link>
+            </li>
+            <li>
               <Link to="/simulations">
                 <FaProductHunt />
                 <span>Simulations</span>

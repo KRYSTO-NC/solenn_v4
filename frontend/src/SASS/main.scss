@@ -12,3 +12,31 @@
     align-items: center;
     justify-content: center;
 }
+
+
+.card-date{
+
+    h2{
+        margin-bottom: 1rem;
+    }
+
+    p{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+    }
+     width: 30rem;
+    font-weight: 600;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow:  0 0 10px 0 rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    background-color: #fff;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}

@@ -23,6 +23,7 @@ import SimulationGuide from './screens/privateScreens/SimulationGuide/Simulation
 import SimulationsScreen from './screens/privateScreens/simulationScreen/SimulationScreen'
 import ParametrageScreen from './screens/adminScreens/parametrageScreen.jsx/ParametrageScreen'
 import SimulationDetails from './screens/privateScreens/simulationDetails/SimulationDetails'
+import SuivieAffairesScreen from './screens/privateScreens/suivieAffairesScreen/SuivieAffairesScreen'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,6 +42,7 @@ const router = createBrowserRouter(
         <Route path="/simulations" element={<SimulationsScreen />} />
         <Route path="/simulation/:id" element={<SimulationDetails />} />
         <Route path="/catalogue-sollen" element={<SollenProductScreen />} />
+        <Route path="/suivie-affaires" element={<SuivieAffairesScreen />} />
       </Route>
       {/* Admin users */}
       <Route path="" element={<AdminRoute />}>

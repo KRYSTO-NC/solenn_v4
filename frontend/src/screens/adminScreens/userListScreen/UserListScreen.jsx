@@ -106,7 +106,7 @@ const UserListScreen = () => {
                   <td>
                     <>
                       <Link to={`/user/${user._id}`}>
-                        <button variant="light" className="btn-sm">
+                        <button className="btn btn-warning">
                           <FaEdit />
                         </button>
                       </Link>
