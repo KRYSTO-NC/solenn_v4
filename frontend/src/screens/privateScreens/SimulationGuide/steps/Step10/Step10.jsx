@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 
+import { Button, Col, Form, Row, Table } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useGetProductsQuery } from "../../../../../slices/dolibarr/dolliProductApiSlice";
 import { FaPlusCircle, FaTrash } from "react-icons/fa";
@@ -67,49 +68,59 @@ const Step10 = ({ installation, onNext }) => {
   return (
     <div className="container">
       <div className="heading">
-        {/* <h1>Stockage de l'installation : {simulation?.refference}</h1> */}
-        <h1>Stockage de l'installation : </h1>
+
+        <h1>Stockage de l'installation : {simmulation.refference}</h1>
       </div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            L'installation aura-t-elle du stockage
-            <input
-              type="checkbox"
-              checked={stockage}
-              onChange={(e) => setStockage(e.target.checked)}
-            />
-          </label>
-        </div>
+      <Form onSubmit={handleSubmit}>
+        <Row>
+          <Col md={4}>
+            <Form.Group controlId="stockage" className="my-2">
+              <Form.Label>L'installation aura-t-elle du stockage</Form.Label>
+              <Form.Check
+                type="checkbox"
+                checked={stockage}
+                onChange={(e) => setStockage(e.target.checked)}
+              />
+            </Form.Group>
+          </Col>
+        </Row>
         {stockage && (
           <>
-            <div>
-              <label>Type de Batterie</label>
-              <select
-                value={typeBatterie}
-                onChange={(e) => setTypeBatterie(e.target.value)}
-              >
-                <option value="">Choisir un type</option>
-                <option value="Lithium Ion">Lithium Ion</option>
-                <option value="Plomb">Plomb</option>
-                <option value="Autre">Autre</option>
-              </select>
-            </div>
-            <div>
-              <label>Capacité total des batteries</label>
-              <input
-                type="number"
-                value={capaciteBatterie}
-                onChange={(e) => setCapaciteBatterie(Number(e.target.value))}
-              />
-            </div>
+            <Row>
+              <Col md={4}>
+                <Form.Group controlId="typeBatterie" className="my-2">
+                  <Form.Label>Type de Batterie</Form.Label>
+                  <Form.Select
+                    value={typeBatterie}
+                    onChange={(e) => setTypeBatterie(e.target.value)}
+                  >
+                    <option value="" disabled>
+                      Choisir un type
+                    </option>
+                    <option value="Lithium Ion">Lithium Ion</option>
+                    <option value="Plomb">Plomb</option>
+                    <option value="Autre">Autre</option>
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col md={4}>
+                <Form.Group controlId="capaciteBatterie" className="my-2">
+                  <Form.Label>Capacité total des batteries</Form.Label>
+                  <Form.Control
+                    type="number"
+                    value={capaciteBatterie}
+                    onChange={(e) =>
+                      setCapaciteBatterie(Number(e.target.value))
+                    }
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
             {/* Tableau des produits */}
-            <div>
-              <div>
+            <Row>
+              <Col md={6}>
                 {loadingProducts ? (
-                  <p>
-                    Chargement...
-                  </p>
+                 <p>chargement...</p>
                 ) : errorProducts ? (
                   <p variant="danger">
                     {typeof errorProducts.data.message === "string"
@@ -117,7 +128,7 @@ const Step10 = ({ installation, onNext }) => {
                       : "Une erreur est survenue"}
                   </p>
                 ) : (
-                  <table>
+                  <Table striped hover responsive className="table-sm">
                     <thead>
                       <tr>
                         <th>Refference</th>
@@ -131,65 +142,63 @@ const Step10 = ({ installation, onNext }) => {
                           <td>{product.ref}</td>
                           <td>{product.label}</td>
                           <td>
-                            <button
-                              className="btn-success"
+                            <Button
+                              variant="success"
+                              className="btn-sm"
                               onClick={() => addProduct(product)}
                             >
-                              Ajouter
-                            </button>
+                              <FaPlusCircle />
+                            </Button>
                           </td>
                         </tr>
                       ))}
                     </tbody>
-                  </table>
+                  </Table>
                 )}
-              </div>
+              </Col>
 
-              <div>
-                <h3>Sélection :</h3>
-                {selectedProducts.map((product) => (
-                  <div key={product.id}>
-                    <div>
-                      <strong>{product.refDolli}</strong>
-                    </div>
-                    <div>
-                      <label>Quantité</label>
-                      <input
-                        type="number"
-                        value={product.quantity}
-                        onChange={(e) =>
-                          updateQuantity(product.id, Number(e.target.value), 'quantity')
-                        }
-                      />
-                    </div>
-                    <div>
-                      <label>Supervision</label>
-                      <input
-                        type="number"
-                        value={product.supervision}
-                        onChange={(e) =>
-                          updateQuantity(product.id, Number(e.target.value), 'supervision')
-                        }
-                      />
-                    </div>
-                    <div>
-                      <button
-                        className="btn-danger"
-                        onClick={() => removeProduct(product.id)}
-                      >
-                        Supprimer
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+              <Col md={6}>
+            <h3>Sélection :</h3>
+            <>
+        {selectedProducts.map((product, index) => (
+          <Row key={product.id}>
+            <Col md={5}>
+             <strong> {product.refDolli}</strong>
+            </Col>
+            <Col md={2}>
+              <Form.Label>Quantité</Form.Label>
+              <Form.Control
+              style={{height:"30px"}}
+                type="number"
+                value={product.quantity}
+                onChange={(e) => updateQuantity(product.id, Number(e.target.value), 'quantity')}
+              />
+            </Col>
+            <Col md={2}>
+              <Form.Label>Supervision</Form.Label>
+              <Form.Control
+              style={{height:"30px"}}
+                type="number"
+                value={product.supervision}
+                onChange={(e) => updateQuantity(product.id, Number(e.target.value), 'supervision')}
+              />
+            </Col>
+            <Col md={2}>
+              <Button variant="danger" className="btn-sm" onClick={() => removeProduct(product.id)}>
+                <FaTrash />
+              </Button>
+            </Col>
+          </Row>
+        ))}
+      </>
+          </Col>
+            </Row>
           </>
         )}
-        <button type="submit" className="btn-primary mb-3">
+        <Button type="submit" variant="primary" className="mb-3">
           Suivant
-        </button>
-      </form>
+        </Button>
+      </Form>
     </div>
   );
 };

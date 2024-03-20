@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+
+import { Button, Col, Form, Row, Table } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useGetProductsQuery } from "../../../../../slices/dolibarr/dolliProductApiSlice";
 import { FaPlusCircle, FaTrash } from "react-icons/fa";
+
 import { useGetSimulationDetailsQuery, useUpdateSimulationMutation } from "../../../../../slices/simulationsApiSlice";
 
 const Step11 = ({ installation, onNext }) => {
@@ -61,22 +64,19 @@ const Step11 = ({ installation, onNext }) => {
     }
   }, [isSuccess, onNext]);
 
-
   return (
     <div className="container">
       <div className="heading">
-        {/* <h1>Supervision : {simulation?.refference}</h1> */}
-        <h1>Supervision : </h1>
+        <h1>Suppervison : {simmulation.refference}</h1>
       </div>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <>
+          <Row></Row>
           {/* Tableau des produits */}
-          <div>
-            <div>
+          <Row>
+            <Col md={6}>
               {loadingProducts ? (
-               <p>
-                  Chargement...
-               </p>
+                 <p>chargement...</p>
               ) : errorProducts ? (
                 <p variant="danger">
                   {typeof errorProducts.data.message === "string"
@@ -84,7 +84,7 @@ const Step11 = ({ installation, onNext }) => {
                     : "Une erreur est survenue"}
                 </p>
               ) : (
-                <table>
+                <Table striped hover responsive className="table-sm">
                   <thead>
                     <tr>
                       <th>Refference</th>
@@ -98,57 +98,71 @@ const Step11 = ({ installation, onNext }) => {
                         <td>{product.ref}</td>
                         <td>{product.label}</td>
                         <td>
-                          <button
-                            className="btn-success"
+                          <Button
+                            variant="success"
+                            className="btn-sm"
                             onClick={() => addProduct(product)}
                           >
-                            Ajouter
-                          </button>
+                            <FaPlusCircle />
+                          </Button>
                         </td>
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </Table>
               )}
-            </div>
+            </Col>
 
-            <div>
+            <Col md={4}>
               <h3>Sélection :</h3>
-              {selectedProducts.map((product) => (
-                <div key={product.id}>
-                  <hr />
-                  <div>
-                    <strong>{product.refDolli}</strong>
-                  </div>
-                  <div>
-                    <label>Quantité</label>
-                    <input
-                      type="number"
-                      style={{ height: "30px" }}
-                      value={product.quantity}
-                      onChange={(e) =>
-                        updateQuantity(product.id, Number(e.target.value), "quantity")
-                      }
-                    />
-                  </div>
-                  <div>
-                    <button
-                      className="btn-danger"
-                      onClick={() => removeProduct(product.id)}
-                    >
-                      Supprimer
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </>
+              <>
+                {selectedProducts.map((product, index) => (
+                  <>
+                  < hr/>
+                  <Row key={product.id} style={{marginBottom:"20px"}}>
+                    <Col md={5}>
+                      
+                       <strong> {product.refDolli}</strong>
+                   
+                    </Col>
+                    <Col md={3}>
+                      <Form.Label>Quantité</Form.Label>
+                      <Form.Control
+                        type="number"
+                        style={{height:"30px"}}
+                        value={product.quantity}
+                        onChange={(e) =>
+                          updateQuantity(
+                            product.id,
+                            Number(e.target.value),
+                            "quantity"
+                            )
+                          }
+                          />
+                    </Col>
 
-        <button type="submit" className="btn-primary mb-3">
+                  
+                    <Col md={1}>
+                      <Button
+                        variant="danger"
+                        className="btn-sm"
+                        onClick={() => removeProduct(product.id)}
+                        >
+                        <FaTrash />
+                      </Button>
+                    </Col>
+                  </Row>
+                </>
+                ))}
+              </>
+            </Col>
+          </Row>
+        </>
+        
+        <Button type="submit" variant="primary" className="mb-3">
           Suivant
-        </button>
-      </form>
+        </Button>
+      </Form>
     </div>
   );
 };
