@@ -1,16 +1,28 @@
 import { useState } from 'react'
-
-import { FaEye } from 'react-icons/fa'
-import { useGetSimulationsQuery } from '../../../slices/simulationsApiSlice'
+import { FaEye, FaTrash } from 'react-icons/fa'
+import { useGetSimulationsQuery, useDeleteSimulationMutation } from '../../../slices/simulationsApiSlice'
 import { Link } from 'react-router-dom'
+import Modal from '../../../components/shared/modal/Modal'
 
 const SimulationsScreen = () => {
-  const { data: simulations, error, isLoading } = useGetSimulationsQuery()
-
-  console.log('====================================')
-  console.log(simulations)
-  console.log('====================================')
+  const { data: simulations, error, isLoading , refetch } = useGetSimulationsQuery()
   const [selectedStatus, setSelectedStatus] = useState('En Service')
+  const [selectedSimulationId, setSelectedSimulationId] = useState(null)
+  const [showConfirmation, setShowConfirmation] = useState(false)
+  const [deleteSimulation] = useDeleteSimulationMutation()
+
+  const handleDeleteConfirmation = (simulationId) => {
+    setSelectedSimulationId(simulationId)
+    setShowConfirmation(true)
+  }
+
+  const handleDeleteSimulation = async () => {
+    await deleteSimulation(selectedSimulationId)
+    setShowConfirmation(false)
+    setSelectedSimulationId(null)
+    refetch()
+  }
+
   return (
     <div className="container">
       {isLoading ? (
@@ -24,20 +36,29 @@ const SimulationsScreen = () => {
             <div className="text-end">
               <p className='lead'>
                 Initialement, seules les installations{' '}
-                <strong>en service</strong> apparaissent dans la liste. Pour
+                <strong>Gagné</strong> apparaissent dans la liste. Pour
                 voir des installations avec d'autres états, utilisez le menu
                 déroulant ci-dessous.
               </p>
-
+              {showConfirmation && (
+            <div className='overlay'>
+              <div className="modal">
+                <p className='medium text-danger'> Etes vous sur de vouloir supprimer cette installation?</p>
+                <div>
+                  <button className='btn btn-success' onClick={handleDeleteSimulation}>Oui</button>
+                  <button className= 'btn btn-danger'onClick={() => setShowConfirmation(false)}>Annuler</button>
+                </div>
+              </div>
+            </div>
+          )}
               <div className="form">
                 <select
                   className="select-filter"
                   onChange={(e) => setSelectedStatus(e.target.value)}
                 >
-                  <option value="En Service">En service</option>
-                  <option value="Projet">Projet</option>
-                  <option value="Simulation">Simulation</option>
-                  <option value="Sans Suite">Sans suite</option>
+                  <option value="Gagné">Gagné</option>
+                  <option value="Prospect">Prospect</option>
+                  <option value="Sans suite">Sans suite</option>
                 </select>
               </div>
             </div>
@@ -51,7 +72,6 @@ const SimulationsScreen = () => {
                 <th>Adresse de l'installation</th>
                 <th>Concessionaire</th>
                 <th>status</th>
-
                 <th></th>
               </tr>
             </thead>
@@ -62,35 +82,37 @@ const SimulationsScreen = () => {
                     !selectedStatus || installation.status === selectedStatus,
                 )
                 .map((simulation) => {
-                  // Ajoutez une condition pour filtrer les produits
-                  if (simulation) {
-                    return (
-                      <tr key={simulation._id}>
-                        <td>{simulation.refference}</td>
-                        <td>{simulation.benneficiaire}</td>
-                        <td>{simulation.demandeur}</td>
-                        <td>{simulation.address}</td>
-                        <td>{simulation.concessionaire}</td>
-                        <td>{simulation.status}</td>
-                        <td>
-                          <Link to={`/simulation/${simulation._id}`}>
-                            <button
-                              variant="success"
-                              className="btn btn-success"
-                            >
-                              <FaEye />
-                            </button>
-                          </Link>
-                        </td>
-                      </tr>
-                    )
-                  } else {
-                    // Retournez null si le produit ne correspond pas au critère
-                    return null
-                  }
+                  return (
+                    <tr key={simulation._id}>
+                      <td>{simulation.refference}</td>
+                      <td>{simulation.benneficiaire}</td>
+                      <td>{simulation.demandeur}</td>
+                      <td>{simulation.address}</td>
+                      <td>{simulation.concessionaire}</td>
+                      <td>{simulation.status}</td>
+                      <td>
+                        <Link to={`/simulation/${simulation._id}`}>
+                          <button
+                            variant="success"
+                            className="btn btn-success"
+                          >
+                            <FaEye />
+                          </button>
+                        </Link>
+                        <button
+                          variant="danger"
+                          className="btn btn-danger"
+                          onClick={() => handleDeleteConfirmation(simulation._id)}
+                        >
+                          <FaTrash/> 
+                        </button>
+                      </td>
+                    </tr>
+                  )
                 })}
             </tbody>
           </table>
+        
         </>
       )}
     </div>

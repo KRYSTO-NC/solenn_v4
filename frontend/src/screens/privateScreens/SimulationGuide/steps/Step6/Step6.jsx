@@ -37,7 +37,7 @@ const Step6 = ({ installation, onNext }) => {
         simulationId: installation,
         // ... autres champs
         consoN,
-        status: 'Projet',
+     
       };
       const response = await updateInstallation(dataToUpdate);
       console.log('Update Installation Response:', response);

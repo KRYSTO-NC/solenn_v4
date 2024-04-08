@@ -1,22 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-const CardDate = ({title, data}) => {
+const CardDate = ({ title, data, onDateUpdate }) => {
+  const [newDate, setNewDate] = useState('');
+
+  const handleDateChange = (event) => {
+    setNewDate(event.target.value);
+  };
+
+  const handleDateSubmit = () => {
+    // Appel de la fonction onDateUpdate pour mettre à jour la date dans SimulationDetails
+    onDateUpdate(newDate);
+  };
+
   return (
-    <div className='card-date'>
-        <h2>{title}</h2>
-
-        {data.status === 'En Attente'? (
-            <p>status  <span className='badge badge-success' >{data.status} </span></p>
-            ): (
-            <p>status  <span className='badge badge-danger' >{data.status} </span></p>
-
-        )}
-        
-        {data.date ? (
-            <p>{data.date}</p>
+    <div className="card-date">
+      <h2>{title}</h2>
+      {data.date ? (
+            <p className='card-date-date'>{ new Date(data.date).toLocaleDateString()}</p>
         ): (
-            ''
+          <div className="form">
+          <input type="date" value={newDate} onChange={handleDateChange} />
+          <button className="btn btn-success" onClick={handleDateSubmit}>
+            Valider
+          </button>
+        </div>
         )}
+
+    
+        
+       
     </div>
   )
 }

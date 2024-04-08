@@ -36,7 +36,7 @@ const SimulationGuide = () => {
     if (stepIndex < 11) {
       setStepIndex(stepIndex + 1);
     } else {
-      navigate('/');
+      navigate(`/simulation/${installationId}`);
     }
   };
 

@@ -73,7 +73,7 @@ const Step4 = ({ installation, onNext }) => {
             address,
             prof,
             typeInstallation,
-            status: "Projet",
+            status: "Prospect",
           };
       
           console.log('Data to Update:', dataToUpdate);

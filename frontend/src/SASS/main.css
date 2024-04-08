@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,100;1,300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,100;1,300&display=swap");
 *,
@@ -60,11 +61,11 @@ button {
   color: #25282a;
   border-radius: 5px;
 }
-.badge.badge-primary {
-  background-color: #ffa231;
+.badge.badge-Prospect {
+  background-color: #2a62bd;
   color: #ffffff;
 }
-.badge.badge-secondary {
+.badge.badge-Gagné {
   background-color: #4a5963;
   color: #ffffff;
 }
@@ -189,7 +190,7 @@ button {
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 10rem;
   margin-top: 10rem;
   min-height: 100vh;
 }
@@ -284,7 +285,7 @@ button {
   background-color: #ffffff;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
   text-decoration: none;
@@ -385,11 +386,11 @@ button {
   color: #25282a;
   border-radius: 5px;
 }
-.badge.badge-primary {
-  background-color: #ffa231;
+.badge.badge-Prospect {
+  background-color: #2a62bd;
   color: #ffffff;
 }
-.badge.badge-secondary {
+.badge.badge-Gagné {
   background-color: #4a5963;
   color: #ffffff;
 }
@@ -606,11 +607,11 @@ button {
   color: #25282a;
   border-radius: 5px;
 }
-.badge.badge-primary {
-  background-color: #ffa231;
+.badge.badge-Prospect {
+  background-color: #2a62bd;
   color: #ffffff;
 }
-.badge.badge-secondary {
+.badge.badge-Gagné {
   background-color: #4a5963;
   color: #ffffff;
 }
@@ -735,7 +736,7 @@ button {
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 10rem;
   margin-top: 10rem;
   min-height: 100vh;
 }
@@ -830,7 +831,7 @@ button {
   background-color: #ffffff;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
   text-decoration: none;
@@ -931,11 +932,11 @@ button {
   color: #25282a;
   border-radius: 5px;
 }
-.badge.badge-primary {
-  background-color: #ffa231;
+.badge.badge-Prospect {
+  background-color: #2a62bd;
   color: #ffffff;
 }
-.badge.badge-secondary {
+.badge.badge-Gagné {
   background-color: #4a5963;
   color: #ffffff;
 }
@@ -1153,4 +1154,13 @@ button {
   width: 100%;
   align-items: center;
   justify-content: space-between;
+}
+.card-date .card-date-date {
+  font-size: 1.5rem;
+  color: #27bc36;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }/*# sourceMappingURL=main.css.map */

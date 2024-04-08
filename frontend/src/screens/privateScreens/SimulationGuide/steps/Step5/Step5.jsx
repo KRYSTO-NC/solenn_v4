@@ -45,7 +45,7 @@ const Step5 = ({ installation, onNext }) => {
         simulationId: installation,
         // ... autres champs
         consoN1,
-        status: 'Projet',
+    
       }
 
       console.log('Data to Update:', dataToUpdate)

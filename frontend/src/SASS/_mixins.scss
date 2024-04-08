@@ -30,10 +30,10 @@
     background-color: $light-color;
     color: $dark-color;
     border-radius: 5px;
-    &.badge-primary {
-        @include setBackground($primary-color);
+    &.badge-Prospect {
+        @include setBackground($prospect-color);
     }
-    &.badge-secondary {
+    &.badge-Gagné {
         @include setBackground($secondary-color);
     }
     &.badge-dark {
