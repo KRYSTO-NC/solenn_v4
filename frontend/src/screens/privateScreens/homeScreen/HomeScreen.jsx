@@ -7,9 +7,9 @@ const HomeScreen = () => {
     <div className="container">
       <h1 className="large">DASHBOARD</h1>
 
-
+{/* 
 <h2>Retard sur les installations</h2>
-      <InstallationCalendar />
+      <InstallationCalendar /> */}
 <h2>Nombre d'installations par ans et par status</h2>
       <SimulationStatusChart />
     </div>

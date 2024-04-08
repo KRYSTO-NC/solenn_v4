@@ -265,9 +265,9 @@ const handleDateUpdate = async (dateField, newDate) => {
             
             title="Date Accord" data={simulation.dateAccord} />
             <CardDate
-              onDateUpdate={(newDate) => handleDateUpdate('datePose', newDate)}
+              onDateUpdate={(newDate) => handleDateUpdate('accompte', newDate)}
             
-            title="Date Accompte" data={simulation.datePose} />
+            title="Date Accompte" data={simulation.accompte} />
             <CardDate
               title="Prev- date de pose"
               onDateUpdate={(newDate) => handleDateUpdate('datePrevisionelPose', newDate)}
