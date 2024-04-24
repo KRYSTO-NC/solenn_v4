@@ -19,8 +19,10 @@ import {
   useGetCommentsQuery,
 } from '../../../slices/commentSlice'
 import Modal from '../../../components/shared/modal/Modal'
-import { FaBan, FaFileInvoice, FaTrash } from 'react-icons/fa'
+import { FaBan, FaFileInvoice, FaPlusCircle, FaTrash } from 'react-icons/fa'
 import { useCreateProposalMutation } from '../../../slices/dolibarr/dolliProposalApiSlice'
+import CardProduct from '../../../components/cardProduct/CardProduct'
+import NewProductForm from '../../../components/newProductForm/NewProductForm'
 
 const SimulationDetails = () => {
   const { id: simulationId } = useParams()
@@ -28,7 +30,7 @@ const SimulationDetails = () => {
   const [commentText, setCommentText] = useState('')
   const [commentTitle, setCommentTitle] = useState('')
   const [filteredComments, setFilteredComments] = useState([])
-
+  
   const { data: comments, refetch } = useGetCommentsQuery()
   const {
     data: simulation,
@@ -46,7 +48,7 @@ const SimulationDetails = () => {
       isSuccess: successUpdating,
     },
   ] = useUpdateSimulationMutation()
- 
+
   const [
     createProposal,
     { isLoading: isCreating, isError, isSuccess },
@@ -54,18 +56,18 @@ const SimulationDetails = () => {
 
   const currentDate = new Date()
   const unixTimestamp = Math.floor(currentDate.getTime() / 1000)
-// Fonction pour mettre à jour la date dans SimulationDetails
-const handleDateUpdate = async (dateField, newDate) => {
+  // Fonction pour mettre à jour la date dans SimulationDetails
+  const handleDateUpdate = async (dateField, newDate) => {
     try {
       await updateSimulation({
         simulationId,
         [dateField]: { date: newDate },
-      });
-      refetchSimulation();
+      })
+      refetchSimulation()
     } catch (error) {
-      console.error('Erreur lors de la mise à jour de la date :', error);
+      console.error('Erreur lors de la mise à jour de la date :', error)
     }
-  };
+  }
 
   const handleCreateProposal = async () => {
     const batteryLines = simulation.batteries.map((battery) => ({
@@ -186,7 +188,7 @@ const handleDateUpdate = async (dateField, newDate) => {
       console.error('Erreur lors de la suppression du commentaire :', error)
     }
   }
-console.log("simu", simulation);
+  console.log('simu', simulation)
   return (
     <div className="container">
       <h1 className="large">Simulation details</h1>
@@ -259,31 +261,38 @@ console.log("simu", simulation);
           </p>
           <h3 className="medium">Dates clefs</h3>
           <div className="formalite-container">
-            <CardDate 
-              onDateUpdate={(newDate) => handleDateUpdate('dateAccord', newDate)}
-            
-            title="Date Accord" data={simulation.dateAccord} />
+            <CardDate
+              onDateUpdate={(newDate) =>
+                handleDateUpdate('dateAccord', newDate)
+              }
+              title="Date Accord"
+              data={simulation.dateAccord}
+            />
             <CardDate
               onDateUpdate={(newDate) => handleDateUpdate('accompte', newDate)}
-            
-            title="Date Accompte" data={simulation.accompte} />
+              title="Date Accompte"
+              data={simulation.accompte}
+            />
             <CardDate
               title="Prev- date de pose"
-              onDateUpdate={(newDate) => handleDateUpdate('datePrevisionelPose', newDate)}
-
+              onDateUpdate={(newDate) =>
+                handleDateUpdate('datePrevisionelPose', newDate)
+              }
               data={simulation.datePrevisionelPose}
             />
             <CardDate title="Date de pose" data={simulation.datePose} />
             <CardDate
               title="Date prev de mise en service"
-              onDateUpdate={(newDate) => handleDateUpdate('datePrevisionelMiseEnService', newDate)}
-
+              onDateUpdate={(newDate) =>
+                handleDateUpdate('datePrevisionelMiseEnService', newDate)
+              }
               data={simulation.datePrevisionelMiseEnService}
             />
             <CardDate
               title="Date de mise en service"
-              onDateUpdate={(newDate) => handleDateUpdate('dateMiseEnService', newDate)}
-
+              onDateUpdate={(newDate) =>
+                handleDateUpdate('dateMiseEnService', newDate)
+              }
               data={simulation.dateMiseEnService}
             />
           </div>
@@ -316,82 +325,146 @@ console.log("simu", simulation);
           </div>
         </>
       )}
-<h2>Consomation N -1</h2>
-<table className='table'>
-<thead>
-              <tr>
-                <th>Jan</th>
-                <th>Fev</th>
-                <th>Mar</th>
-                <th>Avr</th>
-                <th>Mai</th>
-                <th>Juin</th>
-                <th>Juil</th>
-                <th>Aout</th>
-                <th>Sep</th>
-                <th>Oct</th>
-                <th>Nov</th>
-                <th>Dec</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{simulation?.consoN1.janv}</td>
-                <td>{simulation?.consoN1.fev}</td>
-                <td>{simulation?.consoN1.mars}</td>
-                <td>{simulation?.consoN1.avril}</td>
-                <td>{simulation?.consoN1.mai}</td>
-                <td>{simulation?.consoN1.juin}</td>
-                <td>{simulation?.consoN1.juillet}</td>
-                <td>{simulation?.consoN1.aout}</td>
-                <td>{simulation?.consoN1.sept}</td>
-                <td>{simulation?.consoN1.oct}</td>
-                <td>{simulation?.consoN1.nov}</td>
-                <td>{simulation?.consoN1.dec}</td>
-              </tr>
-        
-            </tbody>
-</table>
-<h2>Consomation N</h2>
-<table className='table'>
-<thead>
-              <tr>
-                <th>Jan</th>
-                <th>Fev</th>
-                <th>Mar</th>
-                <th>Avr</th>
-                <th>Mai</th>
-                <th>Juin</th>
-                <th>Juil</th>
-                <th>Aout</th>
-                <th>Sep</th>
-                <th>Oct</th>
-                <th>Nov</th>
-                <th>Dec</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{simulation?.consoN.janv}</td>
-                <td>{simulation?.consoN.fev}</td>
-                <td>{simulation?.consoN.mars}</td>
-                <td>{simulation?.consoN.avril}</td>
-                <td>{simulation?.consoN.mai}</td>
-                <td>{simulation?.consoN.juin}</td>
-                <td>{simulation?.consoN.juillet}</td>
-                <td>{simulation?.consoN.aout}</td>
-                <td>{simulation?.consoN.sept}</td>
-                <td>{simulation?.consoN.oct}</td>
-                <td>{simulation?.consoN.nov}</td>
-                <td>{simulation?.consoN.dec}</td>
-              </tr>
-        
-            </tbody>
-</table>
+      <h2>Consomation N -1</h2>
 
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Jan</th>
+            <th>Fev</th>
+            <th>Mar</th>
+            <th>Avr</th>
+            <th>Mai</th>
+            <th>Juin</th>
+            <th>Juil</th>
+            <th>Aout</th>
+            <th>Sep</th>
+            <th>Oct</th>
+            <th>Nov</th>
+            <th>Dec</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{simulation?.consoN1.janv}</td>
+            <td>{simulation?.consoN1.fev}</td>
+            <td>{simulation?.consoN1.mars}</td>
+            <td>{simulation?.consoN1.avril}</td>
+            <td>{simulation?.consoN1.mai}</td>
+            <td>{simulation?.consoN1.juin}</td>
+            <td>{simulation?.consoN1.juillet}</td>
+            <td>{simulation?.consoN1.aout}</td>
+            <td>{simulation?.consoN1.sept}</td>
+            <td>{simulation?.consoN1.oct}</td>
+            <td>{simulation?.consoN1.nov}</td>
+            <td>{simulation?.consoN1.dec}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Consomation N</h2>
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Jan</th>
+            <th>Fev</th>
+            <th>Mar</th>
+            <th>Avr</th>
+            <th>Mai</th>
+            <th>Juin</th>
+            <th>Juil</th>
+            <th>Aout</th>
+            <th>Sep</th>
+            <th>Oct</th>
+            <th>Nov</th>
+            <th>Dec</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{simulation?.consoN.janv}</td>
+            <td>{simulation?.consoN.fev}</td>
+            <td>{simulation?.consoN.mars}</td>
+            <td>{simulation?.consoN.avril}</td>
+            <td>{simulation?.consoN.mai}</td>
+            <td>{simulation?.consoN.juin}</td>
+            <td>{simulation?.consoN.juillet}</td>
+            <td>{simulation?.consoN.aout}</td>
+            <td>{simulation?.consoN.sept}</td>
+            <td>{simulation?.consoN.oct}</td>
+            <td>{simulation?.consoN.nov}</td>
+            <td>{simulation?.consoN.dec}</td>
+          </tr>
+        </tbody>
+      </table>
 
+      <h3>Type installation</h3>
+     <Modal modalBtn={"ajouter"}>
+      <NewProductForm value={"23"}/>
+     </Modal>
+      <div className="flex-container">
+        {simulation?.type.map((module) => (
+          <CardProduct id={module} />
+        ))}
+      </div>
+      <h3>Modules PV</h3>
+     <Modal modalBtn={"ajouter"}>
+      <NewProductForm value={"17"}/>
+     </Modal>
+      <div className="flex-container">
+        {simulation?.modulesPV.map((module) => (
+          <CardProduct id={module} />
+        ))}
+      </div>
+      <h3>batteries</h3>
+      <Modal modalBtn={"ajouter"}>
+      <NewProductForm value={"22"}/>
+     </Modal>
 
+      <div className="flex-container">
+        {simulation?.batteries.map((module) => (
+          <CardProduct id={module} />
+        ))}
+      </div>
+      <h3>onduleurs</h3>
+      <Modal modalBtn={"ajouter"}>
+      <NewProductForm value={"21"}/>
+     </Modal>
+      <div className="flex-container">
+        {simulation?.onduleurs.map((module) => (
+          <CardProduct id={module} />
+        ))}
+      </div>
+      <h3>prestations</h3>
+      <Modal modalBtn={"ajouter"}>
+      <NewProductForm value={"20"}/>
+     </Modal>
+     
 
+      <div className="flex-container">
+      
+      {simulation?.prestations.map((module) => (
+        <CardProduct id={module} />
+      ))}
+      </div>
+      <h3>suppervision</h3>
+      <Modal modalBtn={"ajouter"}>
+      <NewProductForm value={"19"}/>
+     </Modal>
+      <div className="flex-container">
+        {simulation?.suppervision.map((module) => (
+          <CardProduct id={module} />
+        ))}
+      </div>
+      <h3>supportage</h3>
+      <Modal modalBtn={"ajouter"}>
+      <NewProductForm value={"5"}/>
+     </Modal>
+
+      <div className="flex-container">
+        {simulation?.supportage.map((module) => (
+          <CardProduct id={module} />
+        ))}
+      </div>
 
       <div className="comment-modal">
         <h3 className="medium">Commentaires</h3>

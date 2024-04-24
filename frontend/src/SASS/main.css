@@ -1163,4 +1163,12 @@ button {
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
 }/*# sourceMappingURL=main.css.map */

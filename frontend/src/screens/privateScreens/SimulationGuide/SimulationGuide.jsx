@@ -14,6 +14,7 @@ import Step9 from './steps/Step9/Step9';
 import Step10 from './steps/Step10/Step10';
 import Step11 from './steps/Step11/Step11';
 import Step12 from './steps/Step12/Step12';
+import Step13 from './steps/Step13/Step13';
 
 const SimulationGuide = () => {
   const [stepIndex, setStepIndex] = useState(0);
@@ -33,7 +34,7 @@ const SimulationGuide = () => {
     if (installation) {
       setInstallationId(installation);
     }
-    if (stepIndex < 11) {
+    if (stepIndex < 12) {
       setStepIndex(stepIndex + 1);
     } else {
       navigate(`/simulation/${installationId}`);
@@ -47,7 +48,7 @@ const SimulationGuide = () => {
   };
   console.log("handleNext function in SimulationGuide: ", handleNext);
 
-  const stepsComponents = [Step1 , Step2 , Step3, Step4, Step5, Step6, Step7, Step8,Step9, Step10, Step11, Step12];
+  const stepsComponents = [Step1 , Step2 , Step3, Step4, Step5, Step6, Step7, Step8,Step9, Step10, Step11, Step12, Step13];
   const CurrentStepComponent = stepsComponents[stepIndex];
 
   return (

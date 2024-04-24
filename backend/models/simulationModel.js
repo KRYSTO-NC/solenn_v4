@@ -414,6 +414,17 @@ const simulationSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+    type: [
+      {
+        _id: false, // Désactive la génération automatique de _id
+        ref: { type: String },
+        quantity: { type: Number },
+        multiprices: {
+          pro: { type: Number },
+          part: { type: Number },
+        },
+      },
+    ],
     batteries: [
       {
         _id: false, // Désactive la génération automatique de _id
