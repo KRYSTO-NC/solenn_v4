@@ -46,8 +46,7 @@ const SimulationDetails = () => {
       isSuccess: successUpdating,
     },
   ] = useUpdateSimulationMutation()
-  console.log(simulation)
-  console.log(comments)
+ 
   const [
     createProposal,
     { isLoading: isCreating, isError, isSuccess },
@@ -187,7 +186,7 @@ const handleDateUpdate = async (dateField, newDate) => {
       console.error('Erreur lors de la suppression du commentaire :', error)
     }
   }
-
+console.log("simu", simulation);
   return (
     <div className="container">
       <h1 className="large">Simulation details</h1>
@@ -317,6 +316,82 @@ const handleDateUpdate = async (dateField, newDate) => {
           </div>
         </>
       )}
+<h2>Consomation N -1</h2>
+<table className='table'>
+<thead>
+              <tr>
+                <th>Jan</th>
+                <th>Fev</th>
+                <th>Mar</th>
+                <th>Avr</th>
+                <th>Mai</th>
+                <th>Juin</th>
+                <th>Juil</th>
+                <th>Aout</th>
+                <th>Sep</th>
+                <th>Oct</th>
+                <th>Nov</th>
+                <th>Dec</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{simulation?.consoN1.janv}</td>
+                <td>{simulation?.consoN1.fev}</td>
+                <td>{simulation?.consoN1.mars}</td>
+                <td>{simulation?.consoN1.avril}</td>
+                <td>{simulation?.consoN1.mai}</td>
+                <td>{simulation?.consoN1.juin}</td>
+                <td>{simulation?.consoN1.juillet}</td>
+                <td>{simulation?.consoN1.aout}</td>
+                <td>{simulation?.consoN1.sept}</td>
+                <td>{simulation?.consoN1.oct}</td>
+                <td>{simulation?.consoN1.nov}</td>
+                <td>{simulation?.consoN1.dec}</td>
+              </tr>
+        
+            </tbody>
+</table>
+<h2>Consomation N</h2>
+<table className='table'>
+<thead>
+              <tr>
+                <th>Jan</th>
+                <th>Fev</th>
+                <th>Mar</th>
+                <th>Avr</th>
+                <th>Mai</th>
+                <th>Juin</th>
+                <th>Juil</th>
+                <th>Aout</th>
+                <th>Sep</th>
+                <th>Oct</th>
+                <th>Nov</th>
+                <th>Dec</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{simulation?.consoN.janv}</td>
+                <td>{simulation?.consoN.fev}</td>
+                <td>{simulation?.consoN.mars}</td>
+                <td>{simulation?.consoN.avril}</td>
+                <td>{simulation?.consoN.mai}</td>
+                <td>{simulation?.consoN.juin}</td>
+                <td>{simulation?.consoN.juillet}</td>
+                <td>{simulation?.consoN.aout}</td>
+                <td>{simulation?.consoN.sept}</td>
+                <td>{simulation?.consoN.oct}</td>
+                <td>{simulation?.consoN.nov}</td>
+                <td>{simulation?.consoN.dec}</td>
+              </tr>
+        
+            </tbody>
+</table>
+
+
+
+
 
       <div className="comment-modal">
         <h3 className="medium">Commentaires</h3>

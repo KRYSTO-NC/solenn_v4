@@ -39,7 +39,7 @@ const simulations = [
       nov: 170,
       dec: 210,
     },
-    status: 'En Service',
+    status: 'Prospect',
     demandeur: '3211',
     benneficiaire: '3211',
     concessionaire: 'EEC',
@@ -50,10 +50,10 @@ const simulations = [
       status: 'Accepté',
     },
     demandeEnercal: {
-      status: 'En Demande',
+      status: 'Non Commencé',
     },
     demandeDimenc: {
-      status: 'Refusé',
+      status: 'Non Commencé',
     },
     conformite: {
       status: 'Non Commencé',

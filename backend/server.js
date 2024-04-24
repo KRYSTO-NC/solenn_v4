@@ -10,6 +10,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import userRoutes from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 import simulationRoutes from './routes/simulationRoutes.js'
+import commentRoutes from './routes/commentRoutes.js'
 const port = process.env.PORT || 5000
 
 connectDB()
@@ -28,6 +29,7 @@ app.use(cookieParser())
 app.use('/sollen/api/v4/users', userRoutes)
 app.use('/api/upload', uploadRoutes)
 app.use('/sollen/api/v4/simulations', simulationRoutes)
+app.use('/sollen/api/v4/comments', commentRoutes)
 
 const __dirname = path.resolve()
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))

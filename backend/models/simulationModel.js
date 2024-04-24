@@ -6,6 +6,12 @@ const simulationSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
     },
+    comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comment',
+      },
+    ],
 
     refference: {
       type: String,
@@ -151,8 +157,8 @@ const simulationSchema = mongoose.Schema(
 
     status: {
       type: String,
-      enum: ['Simulation', 'Etude', 'En Service', 'Projet', 'Sans Suite'],
-      default: 'Simulation',
+      enum: ['Prospect', 'Gagné', 'Sans suite'],
+      default: 'Prospect',
     },
 
     demandeur: {
@@ -190,6 +196,9 @@ const simulationSchema = mongoose.Schema(
       dateDemande: {
         type: Date,
       },
+      dateAccord: {
+        type: Date,
+      },
       status: {
         type: String,
         enum: [
@@ -201,12 +210,21 @@ const simulationSchema = mongoose.Schema(
         ],
         default: 'Non Commencé',
       },
+      comments: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Comment',
+        },
+      ],
     },
     // Informations sur la demande Enercal
     demandeEnercal: {
       dateDemande: {
         type: Date,
       },
+      dateAccord: {
+        type: Date,
+      },
       status: {
         type: String,
         enum: [
@@ -218,27 +236,19 @@ const simulationSchema = mongoose.Schema(
         ],
         default: 'Non Commencé',
       },
+      comments: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Comment',
+        },
+      ],
     },
     // Informations sur la demande Dimenc
     demandeDimenc: {
       dateDemande: {
         type: Date,
       },
-      status: {
-        type: String,
-        enum: [
-          'Non Commencé',
-          'En Demande',
-          'Accepté',
-          'Refusé',
-          'sous-reserve',
-        ],
-        default: 'Non Commencé',
-      },
-    },
-    // Informations sur la demande Dimenc
-    demandeCotsuel: {
-      dateDemande: {
+      dateAccord: {
         type: Date,
       },
       status: {
@@ -252,6 +262,41 @@ const simulationSchema = mongoose.Schema(
         ],
         default: 'Non Commencé',
       },
+      comments: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Comment',
+        },
+      ],
+    },
+    // Informations sur la demande Dimenc
+    demandeCotsuel: {
+      dateDemande: {
+        type: Date,
+      },
+      datePassage: {
+        type: Date,
+      },
+      dateLeveeReserve: {
+        type: Date,
+      },
+      status: {
+        type: String,
+        enum: [
+          'Non Commencé',
+          'En Demande',
+          'Accepté',
+          'Refusé',
+          'sous-reserve',
+        ],
+        default: 'Non Commencé',
+      },
+      comments: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Comment',
+        },
+      ],
     },
     // Informations sur la conformité
     conformite: {
@@ -269,6 +314,12 @@ const simulationSchema = mongoose.Schema(
         ],
         default: 'Non Commencé',
       },
+      comments: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Comment',
+        },
+      ],
     },
 
     dateAccord: {
@@ -282,7 +333,7 @@ const simulationSchema = mongoose.Schema(
       },
     },
     accompte: {
-      dateDemande: {
+      date: {
         type: Date,
       },
       status: {
@@ -432,6 +483,7 @@ const simulationSchema = mongoose.Schema(
       },
     ],
   },
+
   {
     timestamps: true,
     toJSON: { virtuals: true },
@@ -485,6 +537,7 @@ simulationSchema.pre('save', async function (next) {
 
   next()
 })
+
 const Simulation = mongoose.model('Simulation', simulationSchema)
 
 export default Simulation
